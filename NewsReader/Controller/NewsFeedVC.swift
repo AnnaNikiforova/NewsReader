@@ -10,6 +10,8 @@ import UIKit
 
 class NewsFeedVC: UIViewController {
     
+    private var rssItems: [RSSItem]?
+    
     let myRefreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
@@ -20,12 +22,24 @@ class NewsFeedVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchData()
         tableView.refreshControl = myRefreshControl
       
     }
     
+    private func fetchData() {
+        let feedParser = FeedParser()
+        feedParser.parseFeed(url: "https://www.vesti.ru/vesti.rss") { (rssItems) in
+            self.rssItems = rssItems
+            
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     @objc private func refresh(sender: UIRefreshControl) {
-        tableView.reloadData()
+        fetchData()
         sender.endRefreshing()
     }
 
@@ -35,14 +49,20 @@ class NewsFeedVC: UIViewController {
 
 extension NewsFeedVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        guard let rssItems = rssItems else {
+            return 0
+        }
+        return rssItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
+        
+        if let item = rssItems?[indexPath.item] {
+            cell.item = item
+        }
         return cell
     }
-    
     
 }
 

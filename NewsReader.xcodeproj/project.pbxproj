@@ -15,6 +15,8 @@
 		957340D32490F67900C71E14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957340D12490F67900C71E14 /* Main.storyboard */; };
 		957340D52490F68000C71E14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 957340D42490F68000C71E14 /* Assets.xcassets */; };
 		957340D82490F68000C71E14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957340D62490F68000C71E14 /* LaunchScreen.storyboard */; };
+		95BE97AC24928BA600946F0C /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE97AB24928BA600946F0C /* XMLParser.swift */; };
+		95BE97AE2492CEB800946F0C /* RSSItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE97AD2492CEB800946F0C /* RSSItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		957340D42490F68000C71E14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		957340D72490F68000C71E14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		957340D92490F68000C71E14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95BE97AB24928BA600946F0C /* XMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
+		95BE97AD2492CEB800946F0C /* RSSItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 		957340DF2490F71100C71E14 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				95BE97AD2492CEB800946F0C /* RSSItem.swift */,
+				95BE97AB24928BA600946F0C /* XMLParser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,6 +176,8 @@
 			files = (
 				95630277249197C8000E9E6F /* FullNewsVC.swift in Sources */,
 				957340D02490F67900C71E14 /* NewsFeedVC.swift in Sources */,
+				95BE97AC24928BA600946F0C /* XMLParser.swift in Sources */,
+				95BE97AE2492CEB800946F0C /* RSSItem.swift in Sources */,
 				957340CC2490F67900C71E14 /* AppDelegate.swift in Sources */,
 				95630275249156E8000E9E6F /* NewsCell.swift in Sources */,
 				957340CE2490F67900C71E14 /* SceneDelegate.swift in Sources */,
