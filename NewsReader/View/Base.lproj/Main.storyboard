@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QBv-UM-DJi">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--BECTИ.RU-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="NewsFeedVC" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="132" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dWY-kh-fqg">
+                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewsCell" id="k5e-X0-awh" customClass="NewsCell" customModule="NewsReader" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="132"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k5e-X0-awh" id="HGG-7J-xVM">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="132"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xw_1634395" translatesAutoresizingMaskIntoConstraints="NO" id="1Ag-2e-of8">
+                                                    <rect key="frame" x="10" y="10" width="155" height="88"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="155" id="BZe-tg-Tgg"/>
+                                                        <constraint firstAttribute="height" constant="88" id="Eis-Sd-v1e"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 июня, 13:45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voW-ad-YmL">
+                                                    <rect key="frame" x="10" y="105" width="155" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="DW3-fG-ihD"/>
+                                                        <constraint firstAttribute="width" constant="155" id="OJV-oo-Soa"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                    <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="СПОРТ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbt-uc-G9L">
+                                                    <rect key="frame" x="172" y="5" width="232" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="SQn-yG-gOP"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                    <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Михаэлю Шумахеру предстоит еще одна сложная операция" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFV-GJ-vYG">
+                                                    <rect key="frame" x="172" y="29" width="232" height="69"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="IFV-GJ-vYG" firstAttribute="leading" secondItem="1Ag-2e-of8" secondAttribute="trailing" constant="7" id="08A-mo-dYr"/>
+                                                <constraint firstItem="IFV-GJ-vYG" firstAttribute="top" secondItem="Rbt-uc-G9L" secondAttribute="bottom" constant="3" id="0qB-Dd-hfm"/>
+                                                <constraint firstItem="voW-ad-YmL" firstAttribute="top" secondItem="1Ag-2e-of8" secondAttribute="bottom" constant="7" id="4sQ-79-dnX"/>
+                                                <constraint firstItem="Rbt-uc-G9L" firstAttribute="leading" secondItem="1Ag-2e-of8" secondAttribute="trailing" constant="7" id="OPz-1B-J1B"/>
+                                                <constraint firstItem="voW-ad-YmL" firstAttribute="leading" secondItem="HGG-7J-xVM" secondAttribute="leading" constant="10" id="RdC-zz-oKZ"/>
+                                                <constraint firstItem="1Ag-2e-of8" firstAttribute="top" secondItem="HGG-7J-xVM" secondAttribute="top" constant="10" id="Swh-Tg-jS0"/>
+                                                <constraint firstAttribute="bottom" secondItem="IFV-GJ-vYG" secondAttribute="bottom" constant="34" id="Xdv-d6-ncH"/>
+                                                <constraint firstItem="1Ag-2e-of8" firstAttribute="leading" secondItem="HGG-7J-xVM" secondAttribute="leading" constant="10" id="h2h-lG-srb"/>
+                                                <constraint firstItem="Rbt-uc-G9L" firstAttribute="top" secondItem="HGG-7J-xVM" secondAttribute="top" constant="5" id="jOb-c1-RPl"/>
+                                                <constraint firstAttribute="trailing" secondItem="IFV-GJ-vYG" secondAttribute="trailing" constant="10" id="pMa-WL-CGo"/>
+                                                <constraint firstAttribute="trailing" secondItem="Rbt-uc-G9L" secondAttribute="trailing" constant="10" id="uco-v6-k79"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryLabel" destination="Rbt-uc-G9L" id="GsF-3t-7Sx"/>
+                                            <outlet property="newsImage" destination="1Ag-2e-of8" id="7fl-Xh-MPl"/>
+                                            <outlet property="pubDateLabel" destination="voW-ad-YmL" id="t5q-te-pWf"/>
+                                            <outlet property="titleLabel" destination="IFV-GJ-vYG" id="Eqg-3p-2za"/>
+                                            <segue destination="RAF-xj-8iU" kind="show" id="LWn-eP-UR2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="tr1-p3-eM0"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="n5Q-aR-Vts"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="eez-Hq-7iP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="eez-Hq-7iP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4Hk-CH-8VL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dWY-kh-fqg" secondAttribute="trailing" id="A1Z-b5-fdW"/>
+                            <constraint firstItem="dWY-kh-fqg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Gu9-bZ-hQG"/>
+                            <constraint firstItem="dWY-kh-fqg" firstAttribute="top" secondItem="eez-Hq-7iP" secondAttribute="bottom" id="ICc-ck-Rht"/>
+                            <constraint firstAttribute="trailing" secondItem="eez-Hq-7iP" secondAttribute="trailing" id="MI8-I0-EOd"/>
+                            <constraint firstItem="eez-Hq-7iP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VVC-cC-fHI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dWY-kh-fqg" secondAttribute="bottom" id="zkm-cg-waO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="BECTИ.RU" id="wT1-h2-C4Q">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="gN6-D9-Czm"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="slider.horizontal.3" catalog="system" id="zZo-c4-wrW">
+                            <color key="tintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="dWY-kh-fqg" id="9AX-jW-o1w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861" y="139"/>
+        </scene>
+        <!--Full NewsVC-->
+        <scene sceneID="K7Z-aV-YwE">
+            <objects>
+                <viewController id="RAF-xj-8iU" customClass="FullNewsVC" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0SQ-J8-ove">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xw_1634395" translatesAutoresizingMaskIntoConstraints="NO" id="V6s-cW-XiF">
+                                <rect key="frame" x="10" y="103" width="394" height="224"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="V6s-cW-XiF" secondAttribute="height" multiplier="197:112" id="aQn-0W-9G1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 июня, 13:45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0f-by-ERw">
+                                <rect key="frame" x="10" y="337" width="394" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="u1K-T3-ezH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Михаэлю Шумахеру предстоит еще одна сложная операция и еще немного слов и еще чуть-чуть" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBY-bO-cyz">
+                                <rect key="frame" x="10" y="358" width="394" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GBY-bO-cyz" secondAttribute="height" multiplier="197:42" id="mnz-KP-o2k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B8R-KB-ka4">
+                                <rect key="frame" x="5" y="442" width="404" height="425"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <mutableString key="text">Известному немецкому автогонщику, семикратному чемпиону мира по автогонкам в классе &amp;quot;Формула-1&amp;quot; Михаэлю Шумахеру предстоит перенести еще одну экспериментальную операцию.
+
+Хирургическое вмешательство будет направлено на восстановление нервной системы немца. Как сообщает Contro Copertina, гонщику будут внедрять стволовые клетки в сердечную ткань.
+
+В сентябре прошлого года Михаэль был доставлен в госпиталь Жоржа Помпиду в Париже. Методики лечения Шумахера были неизвестны и тщательно скрывались родными. По информации инсайдеров, тогда гонщику впервые пересадили стволовые клетки.
+
+Напомним, Шумахер получил серьезную черепно-мозговую травму после падения 29 декабря 2013 года на горнолыжной трассе во Франции. Его госпитализировали и долгое время самый именитый пилот &amp;quot;королевских гонок&amp;quot; находился в коме. На данный момент родственники Шумахера не разглашают подробности о состоянии спортсмена.</mutableString>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Q0f-by-ERw" firstAttribute="leading" secondItem="4eP-81-wkG" secondAttribute="leading" constant="10" id="A2V-X3-2Jr"/>
+                            <constraint firstItem="GBY-bO-cyz" firstAttribute="top" secondItem="Q0f-by-ERw" secondAttribute="bottom" id="AVJ-wL-RNu"/>
+                            <constraint firstItem="B8R-KB-ka4" firstAttribute="leading" secondItem="4eP-81-wkG" secondAttribute="leading" constant="5" id="BoV-7V-d37"/>
+                            <constraint firstItem="B8R-KB-ka4" firstAttribute="top" secondItem="GBY-bO-cyz" secondAttribute="bottom" id="IB2-v0-Q6W"/>
+                            <constraint firstItem="Q0f-by-ERw" firstAttribute="top" secondItem="V6s-cW-XiF" secondAttribute="bottom" constant="10" id="KLZ-zC-6uv"/>
+                            <constraint firstItem="V6s-cW-XiF" firstAttribute="top" secondItem="4eP-81-wkG" secondAttribute="top" constant="15" id="XDp-hE-HBB"/>
+                            <constraint firstItem="GBY-bO-cyz" firstAttribute="leading" secondItem="4eP-81-wkG" secondAttribute="leading" constant="10" id="d2Q-bA-KBY"/>
+                            <constraint firstItem="4eP-81-wkG" firstAttribute="trailing" secondItem="B8R-KB-ka4" secondAttribute="trailing" constant="5" id="fRd-0Y-052"/>
+                            <constraint firstItem="4eP-81-wkG" firstAttribute="trailing" secondItem="GBY-bO-cyz" secondAttribute="trailing" constant="10" id="iMF-N3-SjJ"/>
+                            <constraint firstItem="B8R-KB-ka4" firstAttribute="bottom" secondItem="4eP-81-wkG" secondAttribute="bottom" constant="5" id="pg0-mD-qpE"/>
+                            <constraint firstItem="4eP-81-wkG" firstAttribute="trailing" secondItem="V6s-cW-XiF" secondAttribute="trailing" constant="10" id="qGe-Ps-xxb"/>
+                            <constraint firstItem="4eP-81-wkG" firstAttribute="trailing" secondItem="Q0f-by-ERw" secondAttribute="trailing" constant="10" id="wKS-vd-yaA"/>
+                            <constraint firstItem="V6s-cW-XiF" firstAttribute="leading" secondItem="4eP-81-wkG" secondAttribute="leading" constant="10" id="x8L-sc-BW5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4eP-81-wkG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bc2-Fc-nrP"/>
+                    <connections>
+                        <outlet property="fullNewsText" destination="B8R-KB-ka4" id="GbK-4u-HWM"/>
+                        <outlet property="newsImage" destination="V6s-cW-XiF" id="cXV-0c-2zU"/>
+                        <outlet property="pubDateLabel" destination="Q0f-by-ERw" id="Hdd-L5-ov5"/>
+                        <outlet property="titleLabel" destination="GBY-bO-cyz" id="d2H-15-b8W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E75-Kx-6kf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1589.8550724637682" y="138.61607142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wge-5Q-bvI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QBv-UM-DJi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tK7-MC-fOZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="lmb-K5-faG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVC-8V-Av7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
+        <image name="xw_1634395" width="720" height="409"/>
+    </resources>
+</document>
