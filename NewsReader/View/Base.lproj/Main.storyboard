@@ -90,6 +90,9 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="eez-Hq-7iP">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="fcV-V8-iGh"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -111,6 +114,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="eez-Hq-7iP" id="PtR-C1-vXt"/>
                         <outlet property="tableView" destination="dWY-kh-fqg" id="9AX-jW-o1w"/>
                     </connections>
                 </viewController>
