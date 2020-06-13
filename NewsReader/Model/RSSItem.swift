@@ -12,6 +12,6 @@ struct RSSItem {
     var title: String
     var pubDate: String
     var category: String
-    var imagePath: String
+    var imageURL: String
     var fullText: String
 }

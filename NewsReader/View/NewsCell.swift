@@ -22,7 +22,7 @@ class NewsCell: UITableViewCell {
             pubDateLabel.text = formatDate(newsDate: item.pubDate)
             
             // image converting
-            if let imageURL = URL(string: item.imagePath) {
+            if let imageURL = URL(string: item.imageURL) {
                 DispatchQueue.global().async {
                     let data = try? Data(contentsOf: imageURL)
                     if let data = data {

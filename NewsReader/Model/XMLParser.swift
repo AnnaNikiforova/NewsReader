@@ -18,8 +18,12 @@ class FeedParser: NSObject, XMLParserDelegate {
         }
     }
     private var currentCategory = ""
-    private var currentImagePath = ""
-    private var currentFullText = ""
+    private var currentImageURL = ""
+    private var currentFullText = "" {
+        didSet {
+            currentFullText = currentFullText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        }
+    }
     private var parserCompletionHandler: (([RSSItem]) -> Void)?
     
     func parseFeed(url: String, completionHandler: (([RSSItem]) -> Void)?) {
@@ -50,8 +54,13 @@ class FeedParser: NSObject, XMLParserDelegate {
             currentTitle = ""
             currentPubDate = ""
             currentCategory = ""
-            currentImagePath = ""
+            currentImageURL = ""
             currentFullText = ""
+        }
+        if currentElement == "enclosure" {
+            if let imageURL = attributeDict["url"] {
+                currentImageURL = imageURL
+            }
         }
     }
     
@@ -63,8 +72,6 @@ class FeedParser: NSObject, XMLParserDelegate {
             currentPubDate += string
         case "category":
             currentCategory += string
-        case "enclosure url=":
-            currentImagePath += string
         case "yandex:full-text":
             currentFullText += string
         default:
@@ -74,7 +81,7 @@ class FeedParser: NSObject, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "item" {
-            let rssItem = RSSItem(title: currentTitle, pubDate: currentPubDate, category: currentCategory, imagePath: currentImagePath, fullText: currentFullText)
+            let rssItem = RSSItem(title: currentTitle, pubDate: currentPubDate, category: currentCategory, imageURL: currentImageURL, fullText: currentFullText)
             self.rssItems.append(rssItem)
         }
     }
