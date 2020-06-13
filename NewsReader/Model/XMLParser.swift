@@ -12,7 +12,11 @@ class FeedParser: NSObject, XMLParserDelegate {
     private var rssItems: [RSSItem] = []
     private var currentElement = ""
     private var currentTitle = ""
-    private var currentPubDate = ""
+    private var currentPubDate = "" {
+        didSet {
+            currentPubDate = currentPubDate.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        }
+    }
     private var currentCategory = ""
     private var currentImagePath = ""
     private var currentFullText = ""
