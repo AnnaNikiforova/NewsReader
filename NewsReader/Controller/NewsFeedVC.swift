@@ -12,14 +12,7 @@ class NewsFeedVC: UIViewController {
     
     private var rssItems: [RSSItem]?
     private var searchThroughRSSItems = [RSSItem?]()
-    
     var isSearching = false
-    
-    let myRefreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
-        return refreshControl
-    }()
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -32,6 +25,7 @@ class NewsFeedVC: UIViewController {
         
     }
     
+    // fetch data
     private func fetchData() {
         let feedParser = FeedParser()
         feedParser.parseFeed(url: "https://www.vesti.ru/vesti.rss") { (rssItems) in
@@ -43,11 +37,19 @@ class NewsFeedVC: UIViewController {
         }
     }
     
+    // refresh data
+    let myRefreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        return refreshControl
+    }()
+    
     @objc private func refresh(sender: UIRefreshControl) {
         fetchData()
         sender.endRefreshing()
     }
     
+    // pass data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToTheFullNewsVC"{
             let destinationVC = segue.destination as! FullNewsVC

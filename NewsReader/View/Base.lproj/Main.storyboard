@@ -154,16 +154,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B8R-KB-ka4">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Текст статьи" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B8R-KB-ka4">
                                 <rect key="frame" x="5" y="442" width="404" height="425"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Известному немецкому автогонщику, семикратному чемпиону мира по автогонкам в классе &amp;quot;Формула-1&amp;quot; Михаэлю Шумахеру предстоит перенести еще одну экспериментальную операцию.
-
-Хирургическое вмешательство будет направлено на восстановление нервной системы немца. Как сообщает Contro Copertina, гонщику будут внедрять стволовые клетки в сердечную ткань.
-
-В сентябре прошлого года Михаэль был доставлен в госпиталь Жоржа Помпиду в Париже. Методики лечения Шумахера были неизвестны и тщательно скрывались родными. По информации инсайдеров, тогда гонщику впервые пересадили стволовые клетки.
-
-Напомним, Шумахер получил серьезную черепно-мозговую травму после падения 29 декабря 2013 года на горнолыжной трассе во Франции. Его госпитализировали и долгое время самый именитый пилот &amp;quot;королевских гонок&amp;quot; находился в коме. На данный момент родственники Шумахера не разглашают подробности о состоянии спортсмена.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
