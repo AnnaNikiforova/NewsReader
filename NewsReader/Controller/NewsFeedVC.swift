@@ -48,6 +48,13 @@ class NewsFeedVC: UIViewController {
         sender.endRefreshing()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToTheFullNewsVC"{
+            let destinationVC = segue.destination as! FullNewsVC
+            destinationVC.item = sender as? RSSItem
+        }
+    }
+    
 }
 
 // MARK: - TableView
@@ -80,6 +87,11 @@ extension NewsFeedVC: UITableViewDelegate, UITableViewDataSource {
             }
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = rssItems?[indexPath.item]
+        performSegue(withIdentifier: "ToTheFullNewsVC", sender: item)
     }
     
 }

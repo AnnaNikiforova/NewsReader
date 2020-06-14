@@ -19,39 +19,23 @@ class NewsCell: UITableViewCell {
         didSet {
             titleLabel.text = item.title
             categoryLabel.text = item.category.uppercased()
-            pubDateLabel.text = formatDate(newsDate: item.pubDate)
-            
-            // image converting
-            if let imageURL = URL(string: item.imageURL) {
-                DispatchQueue.global().async {
-                    let data = try? Data(contentsOf: imageURL)
-                    if let data = data {
-                        let image = UIImage(data: data)
-                        DispatchQueue.main.async {
-                            self.newsImage.image = image
-                        }
+            pubDateLabel.text = DataConverter.formatDate(newsDate: item.pubDate)
+            loadImage(url: item.pubDate)
+        }
+    }
+    
+    func loadImage(url: String) {
+        if let imageURL = URL(string: item.imageURL) {
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: imageURL)
+                if let data = data {
+                    let image = UIImage(data: data)
+                    DispatchQueue.main.async {
+                        self.newsImage.image = image
                     }
                 }
             }
         }
-    }
-    
-    // date formatting
-    func formatDate(newsDate: String) -> String {
-        
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "E, d MMM yyyy HH:mm:ss z"
-        
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.locale = Locale(identifier: "ru_RU")
-        dateFormatterPrint.dateFormat = "d MMM, HH:mm"
-        
-        if let date = dateFormatterGet.date(from: item.pubDate) {
-            return dateFormatterPrint.string(from: date)
-        } else {
-            print("There was an error decoding the string")
-        }
-        return ""
     }
     
 }

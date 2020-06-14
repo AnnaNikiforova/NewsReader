@@ -10,6 +10,9 @@ import UIKit
 
 class FullNewsVC: UIViewController {
 
+    var item: RSSItem!
+    
+    
     @IBOutlet weak var newsImage: UIImageView!
     @IBOutlet weak var pubDateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -17,9 +20,28 @@ class FullNewsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-    }
-  
 
+        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+        setUI()
+
+    }
+    
+    func setUI() {
+        pubDateLabel.text = DataConverter.formatDate(newsDate: item.pubDate)
+        titleLabel.text = item.title
+        fullNewsText.text = item.fullText
+      
+        if let imageURL = URL(string: item.imageURL) {
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: imageURL)
+                if let data = data {
+                    let image = UIImage(data: data)
+                    DispatchQueue.main.async {
+                        self.newsImage.image = image
+                    }
+                }
+            }
+        }
+    }
+    
 }

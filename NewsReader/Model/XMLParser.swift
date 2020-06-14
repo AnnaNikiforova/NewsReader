@@ -19,11 +19,7 @@ class FeedParser: NSObject, XMLParserDelegate {
     }
     private var currentCategory = ""
     private var currentImageURL = ""
-    private var currentFullText = "" {
-        didSet {
-            currentFullText = currentFullText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        }
-    }
+    private var currentFullText = ""
     private var parserCompletionHandler: (([RSSItem]) -> Void)?
     
     func parseFeed(url: String, completionHandler: (([RSSItem]) -> Void)?) {
