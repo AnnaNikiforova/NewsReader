@@ -22,7 +22,6 @@ class NewsFeedVC: UIViewController {
         
         fetchData()
         tableView.refreshControl = myRefreshControl
-        
     }
     
     // fetch data
@@ -112,7 +111,7 @@ extension NewsFeedVC: UISearchBarDelegate {
             isSearching = true
             searchThroughRSSItems = rssItems!.filter({ value -> Bool in
                 guard let text = searchBar.text?.lowercased() else { return false}
-                return value.title.lowercased().contains(text)
+                return value.title!.lowercased().contains(text)
             })
             tableView.reloadData()
         }

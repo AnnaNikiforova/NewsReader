@@ -12,7 +12,6 @@ class FullNewsVC: UIViewController {
 
     var item: RSSItem!
     
-    
     @IBOutlet weak var newsImage: UIImageView!
     @IBOutlet weak var pubDateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -23,15 +22,14 @@ class FullNewsVC: UIViewController {
 
         navigationController?.navigationBar.standardAppearance.shadowColor = .clear
         setUI()
-
     }
     
     func setUI() {
-        pubDateLabel.text = DataConverter.formatDate(newsDate: item.pubDate)
+        pubDateLabel.text = DataConverter.formatDate(newsDate: item.pubDate!)
         titleLabel.text = item.title
         fullNewsText.text = item.fullText
       
-        if let imageURL = URL(string: item.imageURL) {
+        if let imageURL = URL(string: item.imageURL!) {
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: imageURL)
                 if let data = data {

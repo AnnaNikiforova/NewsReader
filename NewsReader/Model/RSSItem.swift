@@ -9,9 +9,9 @@
 import Foundation
 
 struct RSSItem {
-    var title: String
-    var pubDate: String
-    var category: String
-    var imageURL: String
-    var fullText: String
+    var title: String?
+    var pubDate: String?
+    var category: String?
+    var imageURL: String?
+    var fullText: String?
 }

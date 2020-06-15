@@ -18,14 +18,14 @@ class NewsCell: UITableViewCell {
     var item: RSSItem! {
         didSet {
             titleLabel.text = item.title
-            categoryLabel.text = item.category.uppercased()
-            pubDateLabel.text = DataConverter.formatDate(newsDate: item.pubDate)
-            loadImage(url: item.pubDate)
+            categoryLabel.text = item.category?.uppercased()
+            pubDateLabel.text = DataConverter.formatDate(newsDate: item.pubDate!)
+            loadImage(url: item.imageURL!)
         }
     }
     
     func loadImage(url: String) {
-        if let imageURL = URL(string: item.imageURL) {
+        if let imageURL = URL(string: item.imageURL!) {
             DispatchQueue.global().async {
                 let data = try? Data(contentsOf: imageURL)
                 if let data = data {
