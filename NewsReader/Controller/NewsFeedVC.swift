@@ -13,22 +13,46 @@ class NewsFeedVC: UIViewController {
     private var rssItems: [RSSItem]?
     private var searchThroughRSSItems = [RSSItem?]()
     var isSearching = false
+    let categories = ["Главные", "Политика", "Экономика", "Происшествия", "Общество", "В мире", "Hi-Tech", "Спорт", "Наука", "Оборона и безопасность"]
+    var selectedCategory = "Главные"
+    var rotationAngle: CGFloat!
     
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var categoryPickerView: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       // setupCategoryPickerView()
         fetchData()
         tableView.refreshControl = myRefreshControl
     }
+
+    // setup PickerView
+    func setupCategoryPickerView() {
+        
+        categoryPickerView.layer.borderWidth = 1.0
+        categoryPickerView.layer.borderColor = UIColor.opaqueSeparator.cgColor
+        
+        // picker view rotation
+        let y = categoryPickerView.frame.origin.y
+        rotationAngle = -(90 * (.pi/180))
+        categoryPickerView.transform = CGAffineTransform(rotationAngle: rotationAngle)
+        categoryPickerView.frame = CGRect(x: 0, y: y, width: view.frame.width, height: 56)
+        
+    }
     
-    // fetch data
+    // fetch data based on PickerView selection
     private func fetchData() {
         let feedParser = FeedParser()
         feedParser.parseFeed(url: "https://www.vesti.ru/vesti.rss") { (rssItems) in
-            self.rssItems = rssItems
+            
+            if self.selectedCategory == self.categories[0] {
+                self.rssItems = rssItems
+            } else {
+                self.rssItems = rssItems.filter({ return $0.category == self.selectedCategory})
+            }
             
             OperationQueue.main.addOperation {
                 self.tableView.reloadData()
@@ -97,7 +121,46 @@ extension NewsFeedVC: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-// MARK: - Search Bar
+// MARK: - PickerView
+
+extension NewsFeedVC: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categories.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categories[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCategory = categories[row]
+        fetchData()
+    }
+    
+//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+//        let label = UILabel()
+//
+//        label.textColor = .label
+//        label.textAlignment = .center
+//        label.frame = CGRect(x: 0, y: 0, width: 300, height: 56)
+//        label.text = categories[row]
+//
+//        let view = UIView()
+//        view.addSubview(label)
+//        view.frame = CGRect(x: 0, y: 0, width: 300, height: 56)
+//        view.transform = CGAffineTransform(rotationAngle: (90 * (.pi/180)))
+//
+//
+//        return view
+//    }
+    
+}
+
+// MARK: - SearchBar
 
 extension NewsFeedVC: UISearchBarDelegate {
     
