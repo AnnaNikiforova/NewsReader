@@ -10,6 +10,8 @@ import UIKit
 
 class NewsCell: UITableViewCell {
     
+    let imageCache = NSCache<AnyObject, AnyObject>()
+    
     @IBOutlet weak var newsImage: UIImageView!
     @IBOutlet weak var pubDateLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -25,13 +27,19 @@ class NewsCell: UITableViewCell {
     }
     
     func loadImage(url: String) {
-        if let imageURL = URL(string: item.imageURL!) {
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: imageURL)
-                if let data = data {
-                    let image = UIImage(data: data)
-                    DispatchQueue.main.async {
-                        self.newsImage.image = image
+        if let imageFromCache = imageCache.object(forKey: url as AnyObject) as? UIImage {
+            self.newsImage.image = imageFromCache
+        } else {
+            if let imageURL = URL(string: item.imageURL!) {
+                DispatchQueue.global().async {
+                    let data = try? Data(contentsOf: imageURL)
+                    if let data = data {
+                        if let imageToCache = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                self.imageCache.setObject(imageToCache, forKey: url as AnyObject)
+                                self.newsImage.image = imageToCache
+                            }
+                        }
                     }
                 }
             }

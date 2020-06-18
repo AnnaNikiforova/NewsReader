@@ -15,7 +15,6 @@ class NewsFeedVC: UIViewController {
     var selectedCategory = "Главные"
     var rotationAngle: CGFloat!
     
-
     @IBOutlet weak var transparentView: UIView!
     @IBOutlet weak var categoryPickerView: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
@@ -23,22 +22,23 @@ class NewsFeedVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
         setupCategoryPickerView()
         fetchData()
-        tableView.refreshControl = myRefreshControl
         tableView.tableFooterView = UIView()
+        tableView.refreshControl = myRefreshControl
     }
-
+    
     // setup PickerView
     func setupCategoryPickerView() {
         
+        // customization
         categoryPickerView.layer.borderWidth = 0.4
         categoryPickerView.layer.borderColor = UIColor.opaqueSeparator.cgColor
         categoryPickerView.selectRow(4, inComponent: 0, animated: true)
         
         // picker view rotation
         let y = self.transparentView.bounds.origin.y
-    
         rotationAngle = -(90 * (.pi/180))
         categoryPickerView.transform = CGAffineTransform(rotationAngle: rotationAngle)
         categoryPickerView.frame = CGRect(x: -100, y: y, width: transparentView.frame.width + 200, height: 56)
@@ -88,21 +88,17 @@ class NewsFeedVC: UIViewController {
 
 extension NewsFeedVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-   
-            guard let rssItems = rssItems else {
-                return 0
-            }
-            return rssItems.count
+        guard let rssItems = rssItems else {
+            return 0
+        }
+        return rssItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
-        
         let item = rssItems?[indexPath.item]
         cell.item = item
-        
         return cell
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -140,7 +136,7 @@ extension NewsFeedVC: UIPickerViewDelegate, UIPickerViewDataSource {
         
         // customization
         let label = UILabel()
-
+        
         label.textColor = .label
         label.font = .boldSystemFont(ofSize: 17)
         label.textAlignment = .center
@@ -153,8 +149,7 @@ extension NewsFeedVC: UIPickerViewDelegate, UIPickerViewDataSource {
         
         // picker view rotation
         view.transform = CGAffineTransform(rotationAngle: (90 * (.pi/180)))
-
-
+        
         return view
     }
     
