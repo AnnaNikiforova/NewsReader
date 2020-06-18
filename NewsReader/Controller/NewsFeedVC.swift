@@ -11,13 +11,12 @@ import UIKit
 class NewsFeedVC: UIViewController {
     
     private var rssItems: [RSSItem]?
-    private var searchThroughRSSItems = [RSSItem?]()
-    var isSearching = false
     let categories = ["Оборона и безопасность", "Происшествия", "В мире", "Экономика", "Главные", "Политика", "Общество", "Наука", "Спорт", "Hi-Tech"]
     var selectedCategory = "Главные"
     var rotationAngle: CGFloat!
     
-    @IBOutlet weak var searchBar: UISearchBar!
+
+    @IBOutlet weak var transparentView: UIView!
     @IBOutlet weak var categoryPickerView: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -38,12 +37,11 @@ class NewsFeedVC: UIViewController {
         categoryPickerView.selectRow(4, inComponent: 0, animated: true)
         
         // picker view rotation
-       // let y = self.view.safeAreaInsets.top
-        
-        let y = categoryPickerView.frame.origin.y
+        let y = self.transparentView.bounds.origin.y
+    
         rotationAngle = -(90 * (.pi/180))
         categoryPickerView.transform = CGAffineTransform(rotationAngle: rotationAngle)
-        categoryPickerView.frame = CGRect(x: -100, y: y, width: view.frame.width + 200, height: 56)
+        categoryPickerView.frame = CGRect(x: -100, y: y, width: transparentView.frame.width + 200, height: 56)
         
     }
     
@@ -90,32 +88,21 @@ class NewsFeedVC: UIViewController {
 
 extension NewsFeedVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if isSearching {
-            return searchThroughRSSItems.count
-        } else {
+   
             guard let rssItems = rssItems else {
                 return 0
             }
             return rssItems.count
-        }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
         
-        if isSearching {
-            if let item = searchThroughRSSItems[indexPath.item] {
-                cell.item = item
-            }
-            return cell
-        } else {
-            if let item = rssItems?[indexPath.item] {
-                cell.item = item
-            }
-            return cell
-        }
+        let item = rssItems?[indexPath.item]
+        cell.item = item
+        
+        return cell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -173,33 +160,3 @@ extension NewsFeedVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
 }
 
-// MARK: - SearchBar
-
-extension NewsFeedVC: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if searchBar.text == nil || searchBar.text == "" {
-            isSearching = false
-            view.endEditing(true)
-            tableView.reloadData()
-        } else {
-            isSearching = true
-            searchThroughRSSItems = rssItems!.filter({ value -> Bool in
-                guard let text = searchBar.text?.lowercased() else { return false}
-                return value.title!.lowercased().contains(text)
-            })
-            tableView.reloadData()
-        }
-        
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchBar.endEditing(true)
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
-    }
-    
-}
