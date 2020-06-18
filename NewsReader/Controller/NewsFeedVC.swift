@@ -13,7 +13,7 @@ class NewsFeedVC: UIViewController {
     private var rssItems: [RSSItem]?
     private var searchThroughRSSItems = [RSSItem?]()
     var isSearching = false
-    let categories = ["Главные", "Политика", "Экономика", "Происшествия", "Общество", "В мире", "Hi-Tech", "Спорт", "Наука", "Оборона и безопасность"]
+    let categories = ["Оборона и безопасность", "Происшествия", "В мире", "Экономика", "Главные", "Политика", "Общество", "Наука", "Спорт", "Hi-Tech"]
     var selectedCategory = "Главные"
     var rotationAngle: CGFloat!
     
@@ -24,22 +24,26 @@ class NewsFeedVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // setupCategoryPickerView()
+        setupCategoryPickerView()
         fetchData()
         tableView.refreshControl = myRefreshControl
+        tableView.tableFooterView = UIView()
     }
 
     // setup PickerView
     func setupCategoryPickerView() {
         
-        categoryPickerView.layer.borderWidth = 1.0
+        categoryPickerView.layer.borderWidth = 0.4
         categoryPickerView.layer.borderColor = UIColor.opaqueSeparator.cgColor
+        categoryPickerView.selectRow(4, inComponent: 0, animated: true)
         
         // picker view rotation
+       // let y = self.view.safeAreaInsets.top
+        
         let y = categoryPickerView.frame.origin.y
         rotationAngle = -(90 * (.pi/180))
         categoryPickerView.transform = CGAffineTransform(rotationAngle: rotationAngle)
-        categoryPickerView.frame = CGRect(x: 0, y: y, width: view.frame.width, height: 56)
+        categoryPickerView.frame = CGRect(x: -100, y: y, width: view.frame.width + 200, height: 56)
         
     }
     
@@ -48,7 +52,7 @@ class NewsFeedVC: UIViewController {
         let feedParser = FeedParser()
         feedParser.parseFeed(url: "https://www.vesti.ru/vesti.rss") { (rssItems) in
             
-            if self.selectedCategory == self.categories[0] {
+            if self.selectedCategory == self.categories[4] {
                 self.rssItems = rssItems
             } else {
                 self.rssItems = rssItems.filter({ return $0.category == self.selectedCategory})
@@ -141,22 +145,31 @@ extension NewsFeedVC: UIPickerViewDelegate, UIPickerViewDataSource {
         fetchData()
     }
     
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        let label = UILabel()
-//
-//        label.textColor = .label
-//        label.textAlignment = .center
-//        label.frame = CGRect(x: 0, y: 0, width: 300, height: 56)
-//        label.text = categories[row]
-//
-//        let view = UIView()
-//        view.addSubview(label)
-//        view.frame = CGRect(x: 0, y: 0, width: 300, height: 56)
-//        view.transform = CGAffineTransform(rotationAngle: (90 * (.pi/180)))
-//
-//
-//        return view
-//    }
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 220
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        // customization
+        let label = UILabel()
+
+        label.textColor = .label
+        label.font = .boldSystemFont(ofSize: 17)
+        label.textAlignment = .center
+        label.frame = CGRect(x: 0, y: 0, width: 220, height: 56)
+        label.text = categories[row]
+        
+        let view = UIView()
+        view.addSubview(label)
+        view.frame = CGRect(x: 0, y: 0, width: 220, height: 56)
+        
+        // picker view rotation
+        view.transform = CGAffineTransform(rotationAngle: (90 * (.pi/180)))
+
+
+        return view
+    }
     
 }
 

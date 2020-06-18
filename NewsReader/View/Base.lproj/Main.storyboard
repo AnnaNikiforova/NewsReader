@@ -17,7 +17,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="132" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dWY-kh-fqg">
                                 <rect key="frame" x="0.0" y="200" width="414" height="662"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewsCell" id="k5e-X0-awh" customClass="NewsCell" customModule="NewsReader" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="132"/>
@@ -86,15 +85,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="n5Q-aR-Vts"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="eez-Hq-7iP">
+                            <searchBar hidden="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="eez-Hq-7iP">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fcV-V8-iGh"/>
                                 </connections>
                             </searchBar>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c25-Hh-p9K">
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c25-Hh-p9K">
                                 <rect key="frame" x="0.0" y="144" width="414" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="9Go-7D-OAI"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="i4m-rS-Les"/>
@@ -104,15 +110,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="eez-Hq-7iP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4Hk-CH-8VL"/>
-                            <constraint firstItem="c25-Hh-p9K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6Cq-6H-lsZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dWY-kh-fqg" secondAttribute="trailing" id="A1Z-b5-fdW"/>
-                            <constraint firstItem="dWY-kh-fqg" firstAttribute="top" secondItem="c25-Hh-p9K" secondAttribute="bottom" id="Amk-zx-9t5"/>
                             <constraint firstItem="dWY-kh-fqg" firstAttribute="top" secondItem="eez-Hq-7iP" secondAttribute="bottom" constant="56" id="CqL-tt-Na8"/>
                             <constraint firstItem="dWY-kh-fqg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Gu9-bZ-hQG"/>
                             <constraint firstAttribute="trailing" secondItem="eez-Hq-7iP" secondAttribute="trailing" id="MI8-I0-EOd"/>
-                            <constraint firstItem="c25-Hh-p9K" firstAttribute="top" secondItem="eez-Hq-7iP" secondAttribute="bottom" id="QDd-M8-Nur"/>
                             <constraint firstItem="eez-Hq-7iP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VVC-cC-fHI"/>
-                            <constraint firstItem="c25-Hh-p9K" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="v0w-W3-kz0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dWY-kh-fqg" secondAttribute="bottom" id="zkm-cg-waO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
