@@ -11,7 +11,7 @@ import UIKit
 class NewsFeedVC: UIViewController {
     
     private var rssItems: [RSSItem]?
-    let categories = ["Оборона и безопасность", "Происшествия", "В мире", "Экономика", "Главные", "Политика", "Общество", "Наука", "Спорт", "Hi-Tech"]
+    let categories = ["МВД", "Происшествие", "СМИ", "Экономика", "Главные", "Политика", "Общество", "Наука", "Футбол", "Hi-Tech"]
     var selectedCategory = "Главные"
     var rotationAngle: CGFloat!
     
@@ -50,10 +50,10 @@ class NewsFeedVC: UIViewController {
         let feedParser = FeedParser()
         feedParser.parseFeed(url: "https://www.vesti.ru/vesti.rss") { (rssItems) in
             
-            if self.selectedCategory == self.categories[4] {
+            if self.selectedCategory.lowercased() == self.categories[4].lowercased() {
                 self.rssItems = rssItems
             } else {
-                self.rssItems = rssItems.filter({ return $0.category == self.selectedCategory})
+                self.rssItems = rssItems.filter({ return $0.category?.lowercased() == self.selectedCategory.lowercased()})
             }
             
             OperationQueue.main.addOperation {
