@@ -12,10 +12,10 @@ import XCTest
 class NewsReaderTests: XCTestCase {
     
     func testDataFormatter() {
-        let date = DataConverter.formatDate(newsDate: "Tue, 23 Jun 2020 18:13:00 +0300")
+        let date = Helpers.formatDate(newsDate: "Tue, 23 Jun 2020 18:13:00 +0300")
         XCTAssertEqual(date, "23 июня, 18:13")
         
-        let dateWithAnError = DataConverter.formatDate(newsDate: "Tue, 23 Jun 2020 18:13:00 +0300   \n")
+        let dateWithAnError = Helpers.formatDate(newsDate: "Tue, 23 Jun 2020 18:13:00 +0300   \n")
         XCTAssertEqual(dateWithAnError, "")
     }
 

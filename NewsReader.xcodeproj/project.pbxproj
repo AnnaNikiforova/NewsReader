@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9534785F2496AD3300A73C9A /* DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9534785E2496AD3300A73C9A /* DataConverter.swift */; };
+		9534785F2496AD3300A73C9A /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9534785E2496AD3300A73C9A /* Helpers.swift */; };
 		9557E80524A2520500727761 /* NewsReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9557E80424A2520500727761 /* NewsReaderTests.swift */; };
 		95630275249156E8000E9E6F /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95630274249156E8000E9E6F /* NewsCell.swift */; };
 		95630277249197C8000E9E6F /* FullNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95630276249197C8000E9E6F /* FullNewsVC.swift */; };
@@ -32,7 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9534785E2496AD3300A73C9A /* DataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConverter.swift; sourceTree = "<group>"; };
+		9534785E2496AD3300A73C9A /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		9557E80224A2520400727761 /* NewsReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9557E80424A2520500727761 /* NewsReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderTests.swift; sourceTree = "<group>"; };
 		9557E80624A2520500727761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +68,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9555232625507A0300F453DA /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				957340CB2490F67900C71E14 /* AppDelegate.swift */,
+				957340CD2490F67900C71E14 /* SceneDelegate.swift */,
+				957340D62490F68000C71E14 /* LaunchScreen.storyboard */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		9555232725507A1700F453DA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				95BE97AB24928BA600946F0C /* XMLParser.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		9555232C25507CAE00F453DA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9534785E2496AD3300A73C9A /* Helpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9557E80324A2520500727761 /* NewsReaderTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,13 +124,13 @@
 		957340CA2490F67900C71E14 /* NewsReader */ = {
 			isa = PBXGroup;
 			children = (
-				957340CB2490F67900C71E14 /* AppDelegate.swift */,
 				957340DF2490F71100C71E14 /* Model */,
 				957340E12490F73400C71E14 /* View */,
 				957340E02490F71800C71E14 /* Controller */,
+				9555232725507A1700F453DA /* Managers */,
+				9555232C25507CAE00F453DA /* Helpers */,
+				9555232625507A0300F453DA /* SupportFiles */,
 				957340D42490F68000C71E14 /* Assets.xcassets */,
-				957340CD2490F67900C71E14 /* SceneDelegate.swift */,
-				957340D62490F68000C71E14 /* LaunchScreen.storyboard */,
 				957340D92490F68000C71E14 /* Info.plist */,
 			);
 			path = NewsReader;
@@ -114,8 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				95BE97AD2492CEB800946F0C /* RSSItem.swift */,
-				95BE97AB24928BA600946F0C /* XMLParser.swift */,
-				9534785E2496AD3300A73C9A /* DataConverter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,7 +207,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "Анна Никифорова";
 				TargetAttributes = {
 					9557E80124A2520400727761 = {
@@ -254,7 +278,7 @@
 				957340CC2490F67900C71E14 /* AppDelegate.swift in Sources */,
 				95630275249156E8000E9E6F /* NewsCell.swift in Sources */,
 				957340CE2490F67900C71E14 /* SceneDelegate.swift in Sources */,
-				9534785F2496AD3300A73C9A /* DataConverter.swift in Sources */,
+				9534785F2496AD3300A73C9A /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +478,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.NewsReader00111;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.NewsReader000123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -473,7 +497,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.NewsReader00111;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.NewsReader000123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

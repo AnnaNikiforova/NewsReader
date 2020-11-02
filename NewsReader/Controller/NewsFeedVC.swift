@@ -11,7 +11,9 @@ import UIKit
 class NewsFeedVC: UIViewController {
     
     private var rssItems: [RSSItem]?
-    let categories = ["МВД", "Происшествие", "СМИ", "Экономика", "Главные", "Политика", "Общество", "Наука", "Футбол", "Hi-Tech"]
+    let cellIdentifier = "NewsCell"
+    let segueIdentifier = "ToTheFullNewsVC"
+    let categories = ["Главные", "Экономика", "Политика", "Общество", "Спорт", "Технологии", "Культура", "Происшествия"]
     var selectedCategory = "Главные"
     var rotationAngle: CGFloat!
     
@@ -21,21 +23,25 @@ class NewsFeedVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+        setupUI()
         setupCategoryPickerView()
         fetchData()
+    }
+    
+    // setup PickerView
+    
+    func setupUI() {
+        navigationController?.navigationBar.standardAppearance.shadowColor = .clear
         tableView.tableFooterView = UIView()
         tableView.refreshControl = myRefreshControl
     }
     
-    // setup PickerView
     func setupCategoryPickerView() {
         
         // customization
         categoryPickerView.layer.borderWidth = 0.4
         categoryPickerView.layer.borderColor = UIColor.opaqueSeparator.cgColor
-        categoryPickerView.selectRow(4, inComponent: 0, animated: true)
+        categoryPickerView.selectRow(0, inComponent: 0, animated: true)
         
         // picker view rotation
         let y = self.transparentView.bounds.origin.y
@@ -50,7 +56,7 @@ class NewsFeedVC: UIViewController {
         let feedParser = FeedParser()
         feedParser.parseFeed(url: "https://www.vesti.ru/vesti.rss") { (rssItems) in
             
-            if self.selectedCategory.lowercased() == self.categories[4].lowercased() {
+            if self.selectedCategory.lowercased() == self.categories[0].lowercased() {
                 self.rssItems = rssItems
             } else {
                 self.rssItems = rssItems.filter({ return $0.category?.lowercased() == self.selectedCategory.lowercased()})
@@ -76,7 +82,7 @@ class NewsFeedVC: UIViewController {
     
     // pass data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ToTheFullNewsVC"{
+        if segue.identifier == segueIdentifier {
             let destinationVC = segue.destination as! FullNewsVC
             destinationVC.item = sender as? RSSItem
         }
@@ -95,7 +101,7 @@ extension NewsFeedVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NewsCell
         let item = rssItems?[indexPath.item]
         cell.item = item
         return cell
@@ -103,7 +109,7 @@ extension NewsFeedVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = rssItems?[indexPath.item]
-        performSegue(withIdentifier: "ToTheFullNewsVC", sender: item)
+        performSegue(withIdentifier: segueIdentifier, sender: item)
     }
     
 }

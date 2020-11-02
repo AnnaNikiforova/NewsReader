@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DataConverter {
+class Helpers {
     
     static func formatDate(newsDate: String) -> String {
         

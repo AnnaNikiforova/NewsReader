@@ -21,7 +21,7 @@ class NewsCell: UITableViewCell {
         didSet {
             titleLabel.text = item.title
             categoryLabel.text = item.category?.uppercased()
-            pubDateLabel.text = DataConverter.formatDate(newsDate: item.pubDate!)
+            pubDateLabel.text = Helpers.formatDate(newsDate: item.pubDate!)
             loadImage(url: item.imageURL!)
         }
     }
@@ -30,20 +30,18 @@ class NewsCell: UITableViewCell {
         if let imageFromCache = imageCache.object(forKey: url as AnyObject) as? UIImage {
             self.newsImage.image = imageFromCache
         } else {
-            if let imageURL = URL(string: item.imageURL!) {
-                DispatchQueue.global().async {
-                    let data = try? Data(contentsOf: imageURL)
-                    if let data = data {
-                        if let imageToCache = UIImage(data: data) {
-                            DispatchQueue.main.async {
-                                self.imageCache.setObject(imageToCache, forKey: url as AnyObject)
-                                self.newsImage.image = imageToCache
-                            }
+            if let imageURL = URL(string: url) {
+                let task = URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                    guard let data = data, error == nil else { return }
+                    if let imageToCache = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self.imageCache.setObject(imageToCache, forKey: url as AnyObject)
+                            self.newsImage.image = imageToCache
                         }
                     }
                 }
+                task.resume()
             }
         }
     }
-    
 }
